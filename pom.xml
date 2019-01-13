@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.pilotprogrammer</groupId>
+	<artifactId>JerseyWithSpring</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0</version>
+	<name>JerseyWithSpring Maven Webapp</name>
+ 	<properties>
+        <jersey2.version>2.25</jersey2.version>
+        <jaxrs.version>2.0.1</jaxrs.version>
+        <springframework.version>5.1.0.RELEASE</springframework.version>
+    </properties>
+    <dependencies>
+        <dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>servlet-api</artifactId>
+	    	<version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${jaxrs.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>${jersey2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey2.version}</version>
+        </dependency>
+
+<!-- fix for "java.lang.IllegalStateException: InjectionManagerFactory not found" on startup, if jersey 2.26/2.27 -->
+<!-- https://stackoverflow.com/questions/44088493/jersey-stopped-working-with-injectionmanagerfactory-not-found     -->
+<!--         <dependency> -->
+<!-- 			<groupId>org.glassfish.jersey.inject</groupId> -->
+<!-- 			<artifactId>jersey-hk2</artifactId> -->
+<!-- 			<version>${jersey2.version}</version> -->
+<!-- 		</dependency> -->
+        
+<!-- fix for "java.lang.ClassNotFoundException: javax.ws.rs.client.RxInvokerProvider" on startup, if jersey 2.26/2.27 -->
+<!-- https://stackoverflow.com/questions/43955795/what-dependency-is-missing-when-i-get-java-lang-noclassdeffounderror-javax-ws-r -->
+<!--         <dependency> -->
+<!-- 		    <groupId>javax.ws.rs</groupId> -->
+<!-- 		    <artifactId>javax.ws.rs-api</artifactId> -->
+<!-- 		    <version>2.1</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>JerseyWithSpring</finalName>
+	</build>
+</project>
